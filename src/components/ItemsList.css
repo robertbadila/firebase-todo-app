@@ -1,0 +1,33 @@
+ul{
+  list-style:none;
+  background:#a6c3d8;
+  position:relative;
+  top:20px;
+}
+
+li{
+  position:relative;
+  margin-top:-10px;
+  padding:.3em 0 .3em 0;
+  border:1px solid #7c6a4257; 
+  font-size:20px;
+  margin-right:40px;
+  text-align:left;
+  padding-left:35px;
+  font-family: 'Open Sans', sans-serif;
+  color:#3d3e49;
+  transition:.3s linear;
+  opacity:1;
+}
+
+li:hover{
+  background:#f4f4f46e;
+  color:#000;
+  border:1px solid #3d3e4970;
+}
+
+li .remove{
+  position:absolute;
+  left:90%;
+  cursor:pointer;
+}
