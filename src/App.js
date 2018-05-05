@@ -12,34 +12,16 @@ class App extends Component {
 
   constructor(){
     super();
-    
-    this.app = firebase.initializeApp(config);
-    this.database = this.app.database().ref().child('todos');
-    
+    firebase.initializeApp(config);    
     this.state = {
       todo: []
     }
   }
 
-  componentWillMount(){
-    const todos = this.state.todo;
-
-    this.database.on('child_added',(snap) => {
-      todos.push({
-        id: snap.key,
-        todoName: snap.val().todoName
-      })
-    })
-
-    this.setState({todo: todos});
-  }
-
-
   handleAddTodo(todo){
     let todos = this.state.todo;
     todos.push(todo);
     this.setState({todo:todos});
-    this.database.push().set({todoName: todo});
   }
 
   removeTodo(id){

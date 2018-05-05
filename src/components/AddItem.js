@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import firebase from 'firebase/app';
 
 import './AddItem.css';
 
@@ -13,11 +14,15 @@ class AddItem extends Component {
 
   handleSubmit(e){
     let text = document.querySelector('#add-todo').value;
+    const database = firebase.database();
+    const ref = database.ref('to-do');
+
     this.setState({
     newTodo:{
       name: text,
-      id: new Date().getTime(),
+      id: new Date().getMilliseconds(),
     }}, function(){
+      ref.push(this.state.newTodo);
       this.props.addTodo(this.state.newTodo);
     });
     e.preventDefault();
